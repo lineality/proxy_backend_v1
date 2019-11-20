@@ -26,9 +26,11 @@ class User(DB.Model):
 class post_here_datatable(DB.Model):
     """The user's data in a table"""
     user_id = DB.Column(DB.BigInteger, primary_key=True)
-    user_name = DB.Column(DB.Unicode(300), primary_key=True)
+    user_name = DB.Column(DB.Unicode(300))
     article_text = DB.Column(DB.Unicode(300))
-    
+    article_title = DB.Column(DB.Unicode(300))
+    recommendations = DB.Column(DB.Unicode(300))
+
     user = DB.relationship('User', backref=DB.backref('tweets', lazy=True))
 
     embedding = DB.Column(DB.PickleType, nullable=False)
